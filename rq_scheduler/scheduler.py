@@ -435,8 +435,7 @@ class Scheduler(object):
                     self.log.debug('{}: Acquired Lock'.format(self.key))
                     self.enqueue_jobs()
                     self.heartbeat()
-                    self.remove_lock()
-
+                    
                     if burst:
                         self.log.info('RQ scheduler done, quitting')
                         break
