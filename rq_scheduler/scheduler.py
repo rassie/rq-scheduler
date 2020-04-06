@@ -91,6 +91,8 @@ class Scheduler(object):
         key = self.scheduler_lock_key
         now = time.time()
         expires = int(self._interval) + 10
+        if self._lock_acquired:
+            self.remove_lock()
         self._lock_acquired = self.connection.set(
                 key, now, ex=expires, nx=True)
         return self._lock_acquired
